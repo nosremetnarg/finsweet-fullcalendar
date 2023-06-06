@@ -3,4 +3,5 @@ export type Event = {
   start: string | Date;
   end: string | Date;
   location: string;
+  teacher: string;
 };

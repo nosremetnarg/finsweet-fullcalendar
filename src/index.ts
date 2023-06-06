@@ -20,6 +20,7 @@ window.Webflow.push(() => {
       right: 'dayGridMonth,timeGridWeek,listWeek',
     },
     events,
+    defaultAllDay: true,
   });
   calendar.render();
 });
@@ -30,9 +31,8 @@ const getEvents = (): Event[] => {
     if (!script.textContent) {
       return;
     }
-    const event: Event = JSON.parse(script.textContent || '{}');
+    const event: Event = JSON.parse(script.textContent!);
     event.start = new Date(event.start);
-    event.end = new Date(event.end);
     return event;
   });
 
