@@ -5,6 +5,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
+  console.log('hello porch')
   const calendarElement = document.querySelector<HTMLElement>('[data-element="calendar"]');
   if (!calendarElement) return;
 
