@@ -7,7 +7,6 @@ window.Webflow.push(() => {
   if (!calendarElement) return;
 
   const events = getEvents();
-  console.log({ events });
 
   const calendar = new Calendar(calendarElement, {
     plugins: [dayGridPlugin],
@@ -15,7 +14,7 @@ window.Webflow.push(() => {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth',
+      right: '',
     },
     events,
     defaultAllDay: true,
