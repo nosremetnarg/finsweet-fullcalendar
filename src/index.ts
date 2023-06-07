@@ -1,11 +1,8 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import listPlugin from '@fullcalendar/list';
-import timeGridPlugin from '@fullcalendar/timegrid';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
-  console.log('hello porch')
   const calendarElement = document.querySelector<HTMLElement>('[data-element="calendar"]');
   if (!calendarElement) return;
 
@@ -13,12 +10,12 @@ window.Webflow.push(() => {
   console.log({ events });
 
   const calendar = new Calendar(calendarElement, {
-    plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
+    plugins: [dayGridPlugin],
     initialView: 'dayGridMonth',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,listWeek',
+      right: 'dayGridMonth',
     },
     events,
     defaultAllDay: true,
