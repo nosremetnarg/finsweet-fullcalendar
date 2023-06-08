@@ -7,7 +7,7 @@ window.Webflow.push(() => {
   if (!calendarElement) return;
 
   const events = getEvents();
-  const happenings = getHappenings();
+  // const happenings = getHappenings();
 
   const calendar = new Calendar(calendarElement, {
     plugins: [dayGridPlugin],
