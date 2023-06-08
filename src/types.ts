@@ -5,3 +5,9 @@ export type Event = {
   location: string;
   teacher: string;
 };
+
+// export type Happening = {
+//   title: string;
+//   date: string | Date;
+//   location: string;
+// };

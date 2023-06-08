@@ -7,6 +7,7 @@ window.Webflow.push(() => {
   if (!calendarElement) return;
 
   const events = getEvents();
+  const happenings = getHappenings();
 
   const calendar = new Calendar(calendarElement, {
     plugins: [dayGridPlugin],
@@ -14,7 +15,7 @@ window.Webflow.push(() => {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'cheese',
+      right: '',
     },
     events,
     defaultAllDay: true,
@@ -35,3 +36,17 @@ const getEvents = (): Event[] => {
 
   return events;
 };
+
+// const getHappenings = (): Happening[] => {
+//   const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="happening-data"]');
+//   const happenings = [...scripts].map((script) => {
+//     if (!script.textContent) {
+//       return;
+//     }
+//     const happening: Happening = JSON.parse(script.textContent!);
+//     happening.start = new Date(happening.start);
+//     return happening;
+//   });
+
+//   return happenings;
+// };
