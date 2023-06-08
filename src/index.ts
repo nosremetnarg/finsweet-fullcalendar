@@ -14,7 +14,7 @@ window.Webflow.push(() => {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: '',
+      right: 'cheese',
     },
     events,
     defaultAllDay: true,
