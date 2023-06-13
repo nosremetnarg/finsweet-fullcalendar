@@ -1,4 +1,4 @@
-export type Event = {
+export type Course = {
   title: string;
   start: string | Date;
   end: string | Date;
