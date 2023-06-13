@@ -7,7 +7,7 @@ window.Webflow.push(() => {
   if (!calendarElement) return;
 
   const events = getEvents();
-  
+
   const calendar = new Calendar(calendarElement, {
     plugins: [dayGridPlugin],
     initialView: 'dayGridMonth',
@@ -44,7 +44,7 @@ const getEvents = (): Event[] => {
 const getHappenings = (): Happening[] => {
   console.log('looking for events');
   const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="event-data"]');
-
+  
   const happenings = [...scripts].map((script) => {
     if (!script.textContent) {
       return;
