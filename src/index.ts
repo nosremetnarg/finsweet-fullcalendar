@@ -24,7 +24,7 @@ window.Webflow.push(() => {
 });
 
 const getEvents = (): Event[] => {
-  const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="event-data"]');
+  const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="class-data"]');
   const events = [...scripts].map((script) => {
     if (!script.textContent) {
       return;
