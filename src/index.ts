@@ -7,8 +7,7 @@ window.Webflow.push(() => {
   if (!calendarElement) return;
 
   const events = getEvents();
-  // const happenings = getHappenings();
-
+  
   const calendar = new Calendar(calendarElement, {
     plugins: [dayGridPlugin],
     initialView: 'dayGridMonth',
@@ -24,29 +23,36 @@ window.Webflow.push(() => {
 });
 
 const getEvents = (): Event[] => {
-  const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="class-data"]');
-  const events = [...scripts].map((script) => {
+  // Get Class Elements
+  const classData = document.querySelectorAll<HTMLScriptElement>('[data-element="class-data"]');
+  // Loop through Classes
+  const events = [...classData].map((script) => {
+    // if class doesnt have text - exit
     if (!script.textContent) {
       return;
     }
+    // Parse the event data
     const event: Event = JSON.parse(script.textContent!);
     event.start = new Date(event.start);
     return event;
   });
-
+  // Get Events
+  getHappenings();
   return events;
 };
 
-// const getHappenings = (): Happening[] => {
-//   const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="happening-data"]');
-//   const happenings = [...scripts].map((script) => {
-//     if (!script.textContent) {
-//       return;
-//     }
-//     const happening: Happening = JSON.parse(script.textContent!);
-//     happening.start = new Date(happening.start);
-//     return happening;
-//   });
+const getHappenings = (): Happening[] => {
+  console.log('looking for events');
+  const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="event-data"]');
 
-//   return happenings;
-// };
+  const happenings = [...scripts].map((script) => {
+    if (!script.textContent) {
+      return;
+    }
+    const happening: Happening = JSON.parse(script.textContent!);
+    happening.start = new Date(happening.start);
+    return happening;
+  });
+
+  return happenings;
+};
