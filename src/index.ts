@@ -1,4 +1,5 @@
 import { Calendar } from '@fullcalendar/core';
+// import { cl } from '@fullcalendar/core/internal-common';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
 window.Webflow ||= [];
@@ -6,7 +7,8 @@ window.Webflow.push(() => {
   const calendarElement = document.querySelector<HTMLElement>('[data-element="calendar"]');
   if (!calendarElement) return;
 
-  const events = getCourses();
+  const events = getHappenings();
+  const classes = getCourses();
 
   const calendar = new Calendar(calendarElement, {
     plugins: [dayGridPlugin],
@@ -16,7 +18,10 @@ window.Webflow.push(() => {
       center: 'title',
       right: '',
     },
-    events,
+    eventSources: [
+      events,
+      classes
+    ],
     defaultAllDay: true,
   });
   calendar.render();
@@ -33,23 +38,24 @@ const getCourses = (): Course[] => {
     }
     // Parse the event data
     const course: Course = JSON.parse(script.textContent!);
+    console.log(course);
     course.start = new Date(course.start);
     return course;
   });
   // Get Events
-  getHappenings();
+  // getHappenings();
   return courses;
 };
 
 const getHappenings = (): Happening[] => {
-  console.log('looking for happening');
-  const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="event-data"]');
-  const happenings = [...scripts].map((script) => {
+  const happeningData = document.querySelectorAll<HTMLScriptElement>('[data-element="event-data"]');
+  const happenings = [...happeningData].map((script) => {
     if (!script.textContent) {
       return;
     }
-    console.log(script);
+
     const happening: Happening = JSON.parse(script.textContent!);
+    console.log(happening);
     happening.start = new Date(happening.start);
     return happening;
   });

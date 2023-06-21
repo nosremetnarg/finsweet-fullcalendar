@@ -8,6 +8,6 @@ export type Course = {
 
 export type Happening = {
   title: string;
-  date: string | Date;
+  start: string | Date;
   location: string;
 };
