@@ -38,7 +38,7 @@ const getCourses = (): Course[] => {
     }
     // Parse the event data
     const course: Course = JSON.parse(script.textContent!);
-    console.log(course);
+    //console.log(course);
     course.start = new Date(course.start);
     return course;
   });
@@ -55,7 +55,7 @@ const getHappenings = (): Happening[] => {
     }
 
     const happening: Happening = JSON.parse(script.textContent!);
-    console.log(happening);
+    //console.log(happening);
     happening.start = new Date(happening.start);
     return happening;
   });
